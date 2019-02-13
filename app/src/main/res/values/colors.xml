@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#001AFF</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+
+
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+
+
+    <color name="theme_blue_primary">#03a9f4</color>
+    <color name="theme_blue_background">#84ffff</color>
+
+    <color name="theme_green_primary">#1de9b6</color>
+    <color name="theme_green_background">#b9f6ca</color>
+
+    <color name="theme_purple_primary">#7e57c2</color>
+    <color name="theme_purple_background">#b388ff</color>
+
+    <color name="theme_red_primary">#ff5252</color>
+    <color name="theme_red_background">#ff8a80</color>
+
+    <color name="theme_yellow_primary">#ffeb3b</color>
+    <color name="theme_yellow_background">#ffff8d</color>
+</resources>
