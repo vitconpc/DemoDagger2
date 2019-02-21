@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements MainView, FoodAda
     FoodPresenter mFoodPresenter;
     @Inject
     FoodAdapter mFoodAdapter;
+    @Inject
+    LinearLayoutManager mLinearLayoutManager;
     private RecyclerView mRvFoods;
     private ProgressBar mProgressBar;
 
@@ -41,9 +43,11 @@ public class MainActivity extends AppCompatActivity implements MainView, FoodAda
     }
 
     private void initData() {
-        DaggerFoodComponent.builder().foodModule(new FoodModule(this,this,this)).build().inject(this);
+        DaggerFoodComponent.builder().foodModule(new FoodModule(this)).build().inject(this);
+        mFoodPresenter.onAttach(this);
         mFoodAdapter.setFoods(mFoodPresenter.getFoods());
-        mRvFoods.setLayoutManager(new LinearLayoutManager(this));
+        mFoodAdapter.onAttachCallback(this);
+        mRvFoods.setLayoutManager(mLinearLayoutManager);
         mRvFoods.setAdapter(mFoodAdapter);
         mProgressBar.setVisibility(View.GONE);
     }

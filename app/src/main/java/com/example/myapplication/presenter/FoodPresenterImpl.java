@@ -27,11 +27,11 @@ public class FoodPresenterImpl implements FoodPresenter, FoodInteractorCallBack 
     }
 
     @Inject
-    public FoodPresenterImpl(Context context, MainView mainView) {
+    public FoodPresenterImpl(Context context, FoodInteractor interactor) {
         mContext = context;
         mFoods = new ArrayList<>();
-        mMainView = mainView;
-        mInteractor = new FoodInteractorImpl(mContext,this);
+        mInteractor = interactor;
+        mInteractor.onAttachCallback(this);
     }
 
     @Override
@@ -39,7 +39,6 @@ public class FoodPresenterImpl implements FoodPresenter, FoodInteractorCallBack 
         mMainView.showDialog();
         mInteractor.getData();
     }
-
 
     @Override
     public void itemOnclick(int position) {
@@ -51,5 +50,10 @@ public class FoodPresenterImpl implements FoodPresenter, FoodInteractorCallBack 
         mFoods.addAll(data);
         mMainView.hideDialog();
         mMainView.showData();
+    }
+
+    @Override
+    public void onAttach(MainView mainView) {
+        mMainView = mainView;
     }
 }

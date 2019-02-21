@@ -9,15 +9,21 @@ import com.example.myapplication.model.Food;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class FoodInteractorImpl implements FoodInteractor {
 
     private Context mContext;
     private FoodInteractorCallBack mCallBack;
     private static final long TIME_DELAY = 2000;
 
-
-    public FoodInteractorImpl(Context context, FoodInteractorCallBack callBack) {
+    @Inject
+    public FoodInteractorImpl(Context context) {
         mContext = context;
+    }
+
+    @Override
+    public void onAttachCallback(FoodInteractorCallBack callBack) {
         mCallBack = callBack;
     }
 

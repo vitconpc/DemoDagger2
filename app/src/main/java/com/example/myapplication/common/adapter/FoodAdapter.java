@@ -15,6 +15,8 @@ import com.example.myapplication.model.Food;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
 
     private List<Food> mFoods;
@@ -25,11 +27,14 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         mFoods = foods;
     }
 
-    public FoodAdapter(FoodAdapterCallback callback, Context context) {
-        mCallback = callback;
+    @Inject
+    public FoodAdapter(Context context) {
         mContext = context;
     }
 
+    public void onAttachCallback(FoodAdapterCallback callback){
+        mCallback = callback;
+    }
     @NonNull
     @Override
     public FoodViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
